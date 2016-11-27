@@ -1,10 +1,14 @@
+/**
+ * 11/26/2016
+ * Author: Nicola Meneghetti
+ * Project: SteelSeries-ColorChanger
+ * File: RegisterGame.java
+ * Version: 1.0
+ */
 package com.steelseries;
 
 import org.json.JSONObject;
 
-/**
- * Created by Mene on 11/26/2016.
- */
 public class RegisterGame {
 
     private String id;

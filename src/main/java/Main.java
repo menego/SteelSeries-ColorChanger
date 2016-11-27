@@ -23,7 +23,7 @@ public class Main {
                     JSONObject jsonObject = new JSONObject(tokener);
                     String address = jsonObject.get("address").toString();
 
-                    RegisterGame rg = new RegisterGame("STEELSERIES_COLORCHANGER", "Color Changer", 1);
+                    RegisterGame rg = new RegisterGame("STEELSERIES_COLORCHANGER", "Color Changer", 4);
                     HttpRequester requester = new HttpRequester(address);
                     requester.postRequest("/game_metadata", rg.toJSONObject());
 
