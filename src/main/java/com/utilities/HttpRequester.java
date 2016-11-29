@@ -36,7 +36,7 @@ public class HttpRequester {
         port = Integer.parseInt(address.split(":")[1]);
     }
 
-    public void postRequest(String enpoint, JSONObject params) throws IOException, URISyntaxException {
+    public void postRequest(String enpoint, JSONObject params) throws URISyntaxException, IOException {
         CloseableHttpClient httpclient = HttpClients.createDefault();
 
         URI uriConfig = new URI("http", null, this.host, this.port, enpoint, null, null);
@@ -55,9 +55,6 @@ public class HttpRequester {
             } else {
                 throw new ClientProtocolException("Unexpected response status: " + status +", " + response.getStatusLine().getReasonPhrase());
             }
-
-
-
         } finally {
             response.close();
         }

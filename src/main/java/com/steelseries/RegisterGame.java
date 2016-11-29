@@ -7,6 +7,7 @@
  */
 package com.steelseries;
 
+import com.utilities.HttpRequester;
 import org.json.JSONObject;
 
 public class RegisterGame {
@@ -76,7 +77,7 @@ public class RegisterGame {
      * @return JSONObject
      * @throws Exception
      */
-    public JSONObject toJSONObject() throws Exception {
+    public JSONObject toJSONObject() throws Exception {//TODO: create custom exception MissingParameterException.
         JSONObject jsnObj = new JSONObject();
         if(this.id==null||this.id.trim()==""
             ||this.name==null||this.name.trim()==""
@@ -89,6 +90,10 @@ public class RegisterGame {
         jsnObj.put("icon_color_id", this.color);
 
         return jsnObj;
+    }
+
+    public void send(HttpRequester requester) throws Exception {
+        requester.postRequest("/game_metadata", this.toJSONObject());
     }
 
 }

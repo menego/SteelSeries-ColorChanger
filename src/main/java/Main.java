@@ -22,10 +22,12 @@ public class Main {
                     JSONTokener tokener = new JSONTokener(is);
                     JSONObject jsonObject = new JSONObject(tokener);
                     String address = jsonObject.get("address").toString();
+                    HttpRequester requester = new HttpRequester(address);
 
                     RegisterGame rg = new RegisterGame("STEELSERIES_COLORCHANGER", "Color Changer", 4);
-                    HttpRequester requester = new HttpRequester(address);
-                    requester.postRequest("/game_metadata", rg.toJSONObject());
+                    rg.send(requester);
+
+
 
                 } else {
                     throw new Exception("SteelSeries configuration file not found.");
