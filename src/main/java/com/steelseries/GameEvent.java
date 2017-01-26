@@ -16,10 +16,7 @@ public class GameEvent {
 
     private String game;
     private String event;
-    private String deviceType;
-    private String zone;
-    private java.awt.Color color;
-    private String mode;
+    private Integer value;
 
 
     /**
@@ -27,18 +24,12 @@ public class GameEvent {
      *
      * @param game
      * @param event
-     * @param deviceType
-     * @param zone
-     * @param color
-     * @param mode
+     * @param value
      */
-    public GameEvent(String game, String event, String deviceType, String zone, java.awt.Color color, String mode){
+    public GameEvent(String game, String event, Integer value){
         this.game = game;
         this.event = event;
-        this.deviceType = deviceType;
-        this.zone = zone;
-        this.color = color;
-        this.mode = mode;
+        this.value = value;
     }
 
     public String getGame() {
@@ -57,36 +48,12 @@ public class GameEvent {
         this.event = event;
     }
 
-    public String getDeviceType() {
-        return deviceType;
+    public Integer getValue() {
+        return value;
     }
 
-    public void setDeviceType(String deviceType) {
-        this.deviceType = deviceType;
-    }
-
-    public String getZone() {
-        return zone;
-    }
-
-    public void setZone(String zone) {
-        this.zone = zone;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public String getMode() {
-        return mode;
-    }
-
-    public void setMode(String mode) {
-        this.mode = mode;
+    public void setValue(Integer value) {
+        this.value = value;
     }
 
     /**
@@ -98,31 +65,15 @@ public class GameEvent {
     public JSONObject toJSONObject() throws Exception {
         JSONObject jsnObj = new JSONObject();
         JSONObject jsnData = new JSONObject();
-        JSONObject jsnValue = new JSONObject();
-        JSONObject jsnColor = new JSONObject();
 
         if(this.game==null||this.game.trim()==""
         ||this.event==null||this.event.trim()==""
-        ||this.deviceType==null||this.deviceType.trim()==""
-        ||this.zone==null||this.zone.trim()==""
-        ||this.color==null
-        ||this.mode==null||this.mode.trim()==""){
+        ||this.value==null){
             throw new Exception(this.getClass() + ": not all parameters are set.");
         }
 
-        //define color Json
-        jsnColor.put("red", this.color.getRed());
-        jsnColor.put("green", this.color.getGreen());
-        jsnColor.put("blue", this.color.getBlue());
-
-        //define value Json
-        jsnValue.put("device-type", this.deviceType);
-        jsnValue.put("zone", this.zone);
-        jsnValue.put("color", jsnColor);
-        jsnValue.put("mode", this.mode);
-
         //define data Json
-        jsnData.put("value", jsnValue);
+        jsnData.put("value", this.value);
 
         //define main Json
         jsnObj.put("game", this.game);

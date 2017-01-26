@@ -77,10 +77,7 @@ public class GUI extends JFrame{
                 GameEvent ge = new GameEvent(
                         appName,
                         eventName,
-                        "headset",
-                        "earcups",
-                        Color.GREEN,
-                        "color"
+                        1
                 );
                 try {
                     ge.send(server);
@@ -101,10 +98,7 @@ public class GUI extends JFrame{
                 GameEvent ge = new GameEvent(
                         appName,
                         eventName,
-                        "headset",
-                        "earcups",
-                        Color.YELLOW,
-                        "color"
+                        2
                 );
                 try {
                     ge.send(server);
@@ -125,10 +119,7 @@ public class GUI extends JFrame{
                 GameEvent ge = new GameEvent(
                         appName,
                         eventName,
-                        "headset",
-                        "earcups",
-                        Color.RED,
-                        "color"
+                        3
                 );
                 try {
                     ge.send(server);

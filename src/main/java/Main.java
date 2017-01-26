@@ -32,8 +32,18 @@ public class Main {
                     RegisterGame rg = new RegisterGame(app, "Color Changer", 5);
                     rg.send(requester);
 
-                    RegisterEvent re = new RegisterEvent(app,event, 6);
+                    JSONObject[] sced = new JSONObject[3];
+                    sced[0] = new SingleColorEventDescriptor(1,1,Color.GREEN).toJSONObject();
+                    sced[1] = new SingleColorEventDescriptor(2,2,Color.YELLOW).toJSONObject();
+                    sced[2] = new SingleColorEventDescriptor(3,3,Color.RED).toJSONObject();
+
+                    JSONObject[] fceh = new JSONObject[1];
+                    fceh[0] = new FixedColorEventHandler("headset","color","earcups",sced).toJSONObject();
+
+                    BindEvent re = new BindEvent(app,event, 1, 100, 6, fceh);
                     re.send(requester);
+
+                    //TODO: Implement the heart beat event every 15 seconds.
 
                     EventQueue.invokeLater(new Runnable() {
                         public void run() {

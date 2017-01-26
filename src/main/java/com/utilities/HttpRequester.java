@@ -42,6 +42,8 @@ public class HttpRequester {
         URI uriConfig = new URI("http", null, this.host, this.port, enpoint, null, null);
         HttpPost httpPostRequest = new HttpPost(uriConfig);
 
+        System.out.println(params);
+
         StringEntity paramString = new StringEntity(params.toString());
         paramString.setContentType("application/json");
         httpPostRequest.setEntity(paramString);
