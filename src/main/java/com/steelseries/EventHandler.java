@@ -62,7 +62,7 @@ public abstract class EventHandler {
         JSONObject jsnObj = new JSONObject();
 
         if(this.device_type ==null||this.mode==null||this.zone==null
-        || this.device_type.trim()==""||this.mode.trim()==""||this.zone.trim()==""){
+        || this.device_type.trim().equals("")||this.mode.trim().equals("")||this.zone.trim().equals("")){
 
             throw new Exception(this.getClass() + ": not all parameters are set.");
         }

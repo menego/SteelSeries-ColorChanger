@@ -10,7 +10,7 @@ package com.steelseries;
 import com.utilities.HttpRequester;
 import org.json.JSONObject;
 
-public class RegisterGame {
+public class RegisterGame implements SteelseriesRequest {
 
     private String id;
     private String name;
@@ -79,8 +79,8 @@ public class RegisterGame {
      */
     public JSONObject toJSONObject() throws Exception {//TODO: create custom exception MissingParameterException.
         JSONObject jsnObj = new JSONObject();
-        if(this.id==null||this.id.trim()==""
-            ||this.name==null||this.name.trim()==""
+        if(this.id==null||this.id.trim().equals("")
+            ||this.name==null||this.name.trim().equals("")
             ||this.color==null||this.color<0||this.color>11){
             throw new Exception(this.getClass() + ": not all parameters are set.");
         }

@@ -2,6 +2,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Timer;
 
 import com.gui.GUI;
 import com.steelseries.*;
@@ -43,7 +44,9 @@ public class Main {
                     BindEvent re = new BindEvent(app,event, 1, 100, 6, fceh);
                     re.send(requester);
 
-                    //TODO: Implement the heart beat event every 15 seconds.
+                    //generate the heartbeat event that keeps up the app on the Steelseries engine.
+                    Timer timer = new Timer();
+                    timer.schedule(new GameHeartBeat(app,requester), 0, 14000);
 
                     EventQueue.invokeLater(new Runnable() {
                         public void run() {

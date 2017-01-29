@@ -10,7 +10,7 @@ package com.steelseries;
 import com.utilities.HttpRequester;
 import org.json.JSONObject;
 
-public class BindEvent {
+public class BindEvent implements SteelseriesRequest {
 
     private String game;
     private String event;
@@ -98,8 +98,8 @@ public class BindEvent {
      */
     public JSONObject toJSONObject() throws Exception {
         JSONObject jsnObj = new JSONObject();
-        if(this.game==null||this.game.trim()==""
-            ||this.event==null||this.event.trim()==""
+        if(this.game==null||this.game.trim().equals("")
+            ||this.event==null||this.event.trim().equals("")
             ||this.minValue==null||this.maxValue==null
             ||this.icon==null||this.icon<0||this.icon>17
             ||this.handlers==null||this.handlers.length==0){

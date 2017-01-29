@@ -10,7 +10,7 @@ package com.steelseries;
 import com.utilities.HttpRequester;
 import org.json.JSONObject;
 
-public class RemoveGameEvent {
+public class RemoveGameEvent implements SteelseriesRequest {
 
     private String game;
     private String event;
@@ -52,8 +52,8 @@ public class RemoveGameEvent {
      */
     public JSONObject toJSONObject() throws Exception {
         JSONObject jsnObj = new JSONObject();
-        if(this.game==null||this.game.trim()==""
-            ||this.event==null||this.event.trim()==""){
+        if(this.game==null||this.game.trim().equals("")
+            ||this.event==null||this.event.trim().equals("")){
             throw new Exception(this.getClass() + ": not all parameters are set.");
         }
 

@@ -10,7 +10,7 @@ package com.steelseries;
 import com.utilities.HttpRequester;
 import org.json.JSONObject;
 
-public class RemoveGame {
+public class RemoveGame implements SteelseriesRequest {
 
     private String game;
 
@@ -41,7 +41,7 @@ public class RemoveGame {
      */
     public JSONObject toJSONObject() throws Exception {
         JSONObject jsnObj = new JSONObject();
-        if(this.game==null||this.game.trim()==""){
+        if(this.game==null||this.game.trim().equals("")){
             throw new Exception(this.getClass() + ": not all parameters are set.");
         }
 

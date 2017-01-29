@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 import java.awt.*;
 
-public class GameEvent {
+public class GameEvent implements SteelseriesRequest {
 
     private String game;
     private String event;
@@ -66,8 +66,8 @@ public class GameEvent {
         JSONObject jsnObj = new JSONObject();
         JSONObject jsnData = new JSONObject();
 
-        if(this.game==null||this.game.trim()==""
-        ||this.event==null||this.event.trim()==""
+        if(this.game==null||this.game.trim().equals("")
+        ||this.event==null||this.event.trim().equals("")
         ||this.value==null){
             throw new Exception(this.getClass() + ": not all parameters are set.");
         }
